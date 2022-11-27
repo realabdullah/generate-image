@@ -10,14 +10,13 @@ const { status, searchQuery, fetchResults, queryResult, resultError, resetAll } 
     <div v-if="status === 'not-loaded'" class="search-bar">
       <input v-model="searchQuery" @keyup.enter="fetchResults" type="search" name="search"
         placeholder="Generate a photo">
-        <svg class="fas fa-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"/></svg>
     </div>
     <div v-if="status === 'loading'" class="searchQ">
-      <h1 v-if="searchQuery !== ''">Searching for <span> &#8220;{{ searchQuery }}&#8221;</span></h1>
-      <h1 v-if="searchQuery === ''">Searching for an empty query <span> &#8220;😒&#8221;</span></h1>
+      <h1 v-if="searchQuery !== ''">Generating images matching <span> &#8220;{{ searchQuery }}&#8221;.</span></h1>
+      <h1 v-if="searchQuery === ''">Senerating images matching an empty string <span> &#8220;😒&#8221;.</span></h1>
     </div>
     <div v-if="status === 'loaded'" class="searchQ">
-      <h1>Search Results for <span>"{{ searchQuery }}"</span></h1>
+      <h1>Generated images matching <span>"{{ searchQuery }}".</span></h1>
       <svg @click="resetAll" class="fas fa-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"/></svg>
     </div>
 
@@ -43,6 +42,7 @@ const { status, searchQuery, fetchResults, queryResult, resultError, resetAll } 
   }
   .search-bar input {
     width: inherit;
+    font-size: 1rem;
     border-style: none;
     padding-block: 1rem;
     padding-inline: 4rem;
